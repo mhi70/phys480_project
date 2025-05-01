@@ -1,6 +1,15 @@
 % Updated GUI layout for kgrid_gui_ver10
 % Clean, logical layout with grouped sections
+%
+% Run Ultrasound and/or Photoacoustic simulations
+% Features: 
+% - add aberrating layer
+% - set kgrid size
+% - add reflecting target
+% - save output Reflection matrix to file
+%
 % Megumi Hirose (24 April 2025)
+%
 
 function kgrid_gui_ver10
 
@@ -8,6 +17,7 @@ function kgrid_gui_ver10
 global kgrid pml medium pulse source
 
 % Create figure
+
 fig = uifigure('Name', 'k-Wave Grid Creator', 'Position', [100, 100, 700, 750]);
 
 %% Panels
@@ -240,7 +250,7 @@ for kk=1:array.element.num % for every transducer array
     else
         [K,array,~] = run_simulation(array,[], false);
     end
-    disp(kk,' done')
+    disp(string(kk) +''+' done')
 
     M(kk,:,:) = K;
 

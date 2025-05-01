@@ -5,21 +5,13 @@ clear global
 close all hidden
 clc
 
-Laura = false;
-run_sim = true; 
+set(0,'DefaultFigureWindowStyle','normal')  % just a preference - you can change this if you like
 
-if Laura
-    folder.base = 'C:\Users\lco137\OneDrive - University of Canterbury\Project management\Imaging Team NZ\Megumi honours 2025\Megumi_photoacoustic_aberration_shared_2025\Beamforming & imaging lab\megumi_code_april15';
-    cd(folder.base)
-    addpath([folder.base '/subfunctions']);
-else
-    folder.base = 'C:\Users\mhi70\OneDrive - University of Canterbury\Megumi_photoacoustic_aberration_shared_2025\Beamforming & imaging lab\megumi_code_april15';
-    %folder.base='/Users/megumihirose/Desktop/PHYS480_project/AcousticBeamformingLab_scripts';
-    % folder.base = 'C:\Users\mhi70\OneDrive - University of Canterbury\Megumi_photoacoustic_aberration_shared_2025\Beamforming & imaging lab\megumi_code_march_18';
-    cd(folder.base)
-    addpath([folder.base '/subfunctions']); % or wherever the subfunctions folder is
-end
-set(0,'DefaultFigureWindowStyle','normal')  % jucst a preference - you can change this if you like
+% set path
+directory_content = dir; % contains everything of the current directory
+exe_path = directory_content(1).folder; % returns the path that is currently open
+addpath(string(exe_path)+''+'/subfunctions')
+addpath(string(exe_path)+''+'/output')
 
 % set up simulation environment
 kgrid_gui_ver10
